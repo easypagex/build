@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390, initial-scale=1.0" />
+  <title>Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FFE500;
+      --accent: #FF2D00;
+      --black: #0A0A0A;
+      --white: #FFFFFF;
+    }
+
+    html, body {
+      width: 390px;
+      height: 844px;
+      overflow: hidden;
+      font-family: 'Barlow', sans-serif;
+      background: var(--bg);
+    }
+
+    .page {
+      width: 390px;
+      height: 844px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 48px 28px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background graphic shapes */
+    .bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      z-index: 0;
+    }
+    .bg-circle-1 {
+      width: 320px; height: 320px;
+      background: var(--accent);
+      top: -80px; right: -80px;
+      opacity: 0.18;
+    }
+    .bg-circle-2 {
+      width: 200px; height: 200px;
+      background: var(--black);
+      bottom: 80px; left: -60px;
+      opacity: 0.07;
+    }
+    .bg-stripe {
+      position: absolute;
+      left: 0; right: 0;
+      height: 8px;
+      background: var(--black);
+      z-index: 0;
+    }
+    .bg-stripe-1 { top: 110px; opacity: 0.12; }
+    .bg-stripe-2 { top: 126px; opacity: 0.06; }
+
+    .top-label {
+      position: relative;
+      z-index: 1;
+      background: var(--black);
+      color: var(--bg);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 100px;
+      align-self: flex-start;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .hero-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 86px;
+      line-height: 0.9;
+      color: var(--black);
+      letter-spacing: -0.01em;
+    }
+
+    .hero-headline span {
+      color: var(--accent);
+    }
+
+    .divider {
+      width: 60px;
+      height: 5px;
+      background: var(--black);
+      border-radius: 2px;
+      margin: 20px auto;
+    }
+
+    .hero-sub {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--black);
+      opacity: 0.65;
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+      max-width: 240px;
+    }
+
+    .price-badge {
+      text-decoration: none;
+      cursor: pointer;
+      margin-top: 28px;
+      background: var(--accent);
+      color: var(--white);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      padding: 10px 32px 8px;
+      border-radius: 12px;
+      box-shadow: 6px 6px 0 var(--black);
+      display: inline-block;
+    }
+
+    .price-badge .dollar {
+      font-size: 30px;
+      vertical-align: super;
+      margin-right: 2px;
+    }
+
+    .bottom {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cta-btn {
+      display: block;
+      width: 100%;
+      background: var(--black);
+      color: var(--bg);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-align: center;
+      padding: 22px 0 18px;
+      border-radius: 16px;
+      box-shadow: 5px 5px 0 var(--accent);
+      transition: transform 0.12s, box-shadow 0.12s;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+
+    .cta-btn:active {
+      transform: translate(3px, 3px);
+      box-shadow: 2px 2px 0 var(--accent);
+    }
+
+    .cta-btn:active::after {
+      opacity: 0.12;
+    }
+
+    .arrow {
+      display: inline-block;
+      margin-left: 10px;
+      font-size: 26px;
+    }
+
+    .fine-print {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      color: var(--black);
+      opacity: 0.4;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="bg-circle bg-circle-1"></div>
+    <div class="bg-circle bg-circle-2"></div>
+    <div class="bg-stripe bg-stripe-1"></div>
+    <div class="bg-stripe bg-stripe-2"></div>
+
+    <div class="top-label">⚡ Limited Offer</div>
+
+    <div class="hero">
+      <div class="hero-eyebrow">Get Your</div>
+      <div class="hero-headline">LANDING<br><span>PAGE</span></div>
+      <div class="divider"></div>
+      <div class="hero-sub">Professional. Fast. Ready to launch today.</div>
+      <a class="price-badge" href="https://easypagex.github.io/easy/" target="_blank" rel="noopener">
+        <span class="dollar">$</span>48
+      </a>
+    </div>
+
+    <div class="bottom">
+      <a class="cta-btn" href="https://easypagex.github.io/easy/" target="_blank" rel="noopener">
+        ORDER HERE <span class="arrow">→</span>
+      </a>
+      <div class="fine-print">One-time payment · No subscription</div>
+    </div>
+  </div>
+</body>
+</html>
